@@ -2,7 +2,7 @@ provider "aws" {
   region = "eu-west-1" # London (Framestore HQ)
 }
 
-# 🎬 VFX Render Node Infrastructure
+# [VFX] VFX Render Node Infrastructure
 resource "aws_eks_cluster" "render_cluster" {
   name     = "vfx-render-pipeline-eks"
   role_arn = aws_iam_role.eks_role.arn
@@ -12,7 +12,7 @@ resource "aws_eks_cluster" "render_cluster" {
   }
 }
 
-# 📂 High-Performance Asset Storage
+# [STORAGE] High-Performance Asset Storage
 resource "aws_s3_bucket" "vfx_assets" {
   bucket = "framestore-vfx-render-assets-demo"
 }
@@ -29,7 +29,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "asset_cleanup" {
   }
 }
 
-# 📊 VFX Observability: Render Node Health Alarm
+# [METRICS] VFX Observability: Render Node Health Alarm
 resource "aws_cloudwatch_metric_alarm" "render_node_failure" {
   alarm_name          = "vfx-render-node-stalled"
   comparison_operator = "LessThanThreshold"

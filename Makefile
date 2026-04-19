@@ -8,9 +8,9 @@ help:
 	@echo "  make test       Run unit tests for the monitor logic"
 
 monitor:
-	@echo "🎬 Starting VFX Pipeline Audit..."
+	@echo "[VFX] Starting VFX Pipeline Audit..."
 	@python3 pipeline/pipeline_monitor.py
 
 test:
-	@echo "🛠️ Running logic verification..."
+	@echo "[SETUP] Running logic verification..."
 	@python3 -m unittest tests/test_monitor.py

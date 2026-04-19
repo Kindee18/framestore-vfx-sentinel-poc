@@ -9,12 +9,12 @@ class VFXPipelineMonitor:
         self.eks = boto3.client('eks')
 
     def check_pipeline_health(self, active_render_nodes, queue_depth):
-        print(f"🎬 Framestore VFX Monitor: Auditing Render Pipeline at {datetime.now()}")
+        print(f"[VFX] Framestore VFX Monitor: Auditing Render Pipeline at {datetime.now()}")
         
         status = "HEALTHY"
         recommendation = "N/A"
 
-        # 🧠 VFX Operational Logic:
+        #  VFX Operational Logic:
         # If queue depth is high but nodes are low, we have a bottleneck.
         # If nodes are failing health checks, we have an infrastructure incident.
 
@@ -28,8 +28,8 @@ class VFXPipelineMonitor:
             status = "OPTIMAL"
             recommendation = "Pipeline performing at peak efficiency."
 
-        print(f"📊 PIPELINE STATUS: {status}")
-        print(f"🤖 AGENT REASONING: {recommendation}")
+        print(f"[METRICS] PIPELINE STATUS: {status}")
+        print(f"[AI] AGENT REASONING: {recommendation}")
 
         return {
             "status": status,
@@ -41,4 +41,4 @@ if __name__ == "__main__":
     monitor = VFXPipelineMonitor("vfx-render-pipeline-eks")
     # Simulate a high-pressure production scenario (High queue, low nodes)
     report = monitor.check_pipeline_health(active_render_nodes=1, queue_depth=450)
-    print(f"✅ Final Production Report: {json.dumps(report, indent=2)}")
+    print(f"[SUCCESS] Final Production Report: {json.dumps(report, indent=2)}")
